@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { success } from '../Toast';
 import { login } from '../Utils/ApiUtils';
 import '../style/login.css';
@@ -22,6 +22,7 @@ function Login() {
     if (apiResponce.status === 200) {
       console.log("responcemessage", apiResponce);
       success(apiResponce.data.message)
+      navigate('/home')
     } else {
       console.log("error");
     }
@@ -33,7 +34,7 @@ function Login() {
         <img src='https://globalprimenews.com/wp-content/uploads/2022/09/IMG-20220908-WA0050.jpg' width='80%' height='80%' />
       </div>
 
-      <div className='content'>
+      <div className='content mt-4'>
         <h2 className="my-5 fs-2 text-info">LOGIN</h2>
         <div>
           <form className="d-flex flex-column align-items-center ">

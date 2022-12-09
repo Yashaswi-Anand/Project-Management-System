@@ -1,0 +1,19 @@
+.background{
+    background-color: lightgray;
+    height: 200vh;
+    width: 100%;
+}
+
+.heading{
+    color:indigo;
+    margin: 10px;
+    font-weight: 900;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-decoration: underline;
+}
+
+.heading-name{
+    color: green;
+    font-weight: 900;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}

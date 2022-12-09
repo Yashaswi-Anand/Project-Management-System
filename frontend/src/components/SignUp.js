@@ -36,7 +36,7 @@ function SignUp() {
                 <img src='https://globalprimenews.com/wp-content/uploads/2022/09/IMG-20220908-WA0050.jpg' width='80%' height='80%' />
             </div>
 
-            <div className='content'>
+            <div className='content mt-4'>
                 <h2 className="my-5 fs-2 text-info">SIGNUP</h2>
                 <form d-flex flex-column align-items-center >
                     <div>

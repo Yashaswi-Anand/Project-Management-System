@@ -39,14 +39,14 @@ Create a project management api solution:
 # Login2
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/login2.png)
 
-# add project
+# add new project
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/added.png)
 
-# delete
+# delete a project
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/delete.png)
 
-# share
+# share a project with multiple users with their id
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/share.png)
 
-# report
+# report status
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/report.png)

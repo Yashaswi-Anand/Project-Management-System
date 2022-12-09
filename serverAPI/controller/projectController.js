@@ -20,7 +20,6 @@ exports.createProject = async(req,res) => {
 
 // read or fetch all project
 exports.getProjects = async(req,res) => {
-    console.log(req.params.id);
     try {
         const project = await Project.find()
         if(!project){

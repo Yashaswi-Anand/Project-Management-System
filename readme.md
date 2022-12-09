@@ -50,3 +50,7 @@ Create a project management api solution:
 
 # report status
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/report.png)
+
+# Project links
+API: localhost:5000
+ReactJs: localhost:3000

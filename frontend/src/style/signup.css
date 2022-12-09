@@ -1,0 +1,23 @@
+input {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.3rem;
+    border-radius: 10px;
+    width: 80%;
+    border: 1px solid green;
+}
+
+
+.button-style {
+    color: green;
+    background-color: whitesmoke;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    width: 80%;
+    margin-bottom: 0.3rem;
+}
+
+.button-style:hover {
+    color: white;
+    background-color: green;
+}

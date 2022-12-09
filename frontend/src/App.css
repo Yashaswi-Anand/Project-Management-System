@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.content {
+  margin-left: 70%;
+  width: 29%;
+  padding: 1px 0px;
+}

@@ -5,6 +5,13 @@ const app = express()
 const db = require('./config/mongoose')
 const userRoute = require('./routes/userRoute')
 const projectRoute = require('./routes/projectRoutes')
+const cors = require('cors')
+
+// cors
+var corsOption ={
+    origin : '*'
+}
+app.use(cors(corsOption))
 
 // use body parser
 app.use(bodyParser.json())

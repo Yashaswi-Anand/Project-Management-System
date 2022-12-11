@@ -78,6 +78,23 @@ div.content-home {
 }
 
 
+/* update button */
+.update-btn{
+    width: 80%;
+    padding: 0.5rem 1rem;
+    border: 1px green solid;
+    border-radius: 5px;
+    background-color: yellow;
+    color: green;
+}
+
+.update-btn:hover{
+    background-color: green;
+    color: whitesmoke;
+    border: 1px whitesmoke solid;
+}
+
+
 .heading-text{
     color:indigo;
     font-weight: 900;

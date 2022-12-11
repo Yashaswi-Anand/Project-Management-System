@@ -32,22 +32,18 @@ export const onDeleteProject = async(id) =>{
   }
 }
 
-// 
-// export const updateTodo = async(id, todoData) =>{
-//   try {
-//       const response = await axios({
-//         method: "PATCH",
-//         url: `${api_url}/update-todo/${id}`,
-//       //   headers: {
-//       //     "access-token": localStorage.getItem("token"),
-//       //     'accept': "application/json",
-//       //     "Content-Type": "application/json"
-//       //   },
-//         data: {...todoData}
-//       });
-//       return response;
-//     } catch (err) {
-//       console.log(err);
-//       return err;
-//     }
-// }
+// update project
+export const updateProject= async(idForUpdate, projectData) =>{
+  console.log(idForUpdate, projectData);
+  try {
+      const response = await axios({
+        method: "PATCH",
+        url: `${api_url}/updateProject/${idForUpdate}`,
+        data: {...projectData}
+      });
+      return response;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../style/home.css';
 import { success } from '../Toast';
-import { addProject, onDeleteProject } from '../Utils/projectApi';
+import { addProject, onDeleteProject, updateProject } from '../Utils/projectApi';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,8 @@ function Home() {
     title: "",
     description: ""
   });
+  const [edit, setEdit] = useState(false)
+  const [idForUpdate, setIdForUpdate] = useState(0)
 
   const onHandleEvent = (event) => {
     setProjectData({ ...projectData, [event.target.name]: event.target.value, [event.target.name]: event.target.value })
@@ -32,6 +34,10 @@ function Home() {
       // success(apiResponce.data.message)
       console.log("error", apiResponce);
     }
+    setProjectData({
+      title: "",
+      description: ""
+    })
   }
 
   // on delete project
@@ -48,10 +54,38 @@ function Home() {
   }
 
   // show report
-  const onShowReport =(id)=>{
+  const onShowReport = (id) => {
     localStorage.setItem('reportId', id)
     navigate('/report')
   }
+
+  // edit project detail
+  const onEditProject = (id) => {
+    const projectList = [...allProjectData]
+    const project = projectList.find(item => item._id === id);
+    console.log(project);
+    setProjectData({ title: project.title, description: project.description })
+    setEdit(true)
+    setIdForUpdate(id)
+  }
+
+  // update the project
+  const onUpdateProject = async () => {
+    console.log(idForUpdate, projectData);
+    const res = await updateProject(idForUpdate, projectData)
+    if (res.status === 200) {
+      success(res.data.message)
+      console.log("responce message:", res.data.message);
+    } else {
+      console.log("error");
+    }
+    setEdit(false)
+    setProjectData({
+      title: "",
+      description: ""
+    })
+  }
+
 
   useEffect(() => {
     (async () => {
@@ -73,6 +107,7 @@ function Home() {
             <input
               type='text'
               name='title'
+              value={projectData.title}
               placeholder='Enter project title'
               onChange={(e) => onHandleEvent(e)}
             />
@@ -81,6 +116,7 @@ function Home() {
               rows={4}
               cols={30}
               type="text"
+              value={projectData.description}
               name="description"
               placeholder="Write discription here..."
               onChange={(e) => onHandleEvent(e)}
@@ -88,7 +124,9 @@ function Home() {
           </form>
         </div>
 
-        <div><button className='add-btn' onClick={() => onAddProject()}><h5>Add</h5></button></div>
+        <div>
+          {!edit ? <button className='add-btn' onClick={() => onAddProject()}><h5>Add</h5></button> : <button className='update-btn' onClick={() => onUpdateProject()}><h5>UPDATE</h5></button>}
+        </div>
 
       </div>
 
@@ -99,7 +137,7 @@ function Home() {
           : <div className='container'>
             <div className='margin'>
               <div className='row mt-3 ms-3'>
-              <div className='col-1 fs-3 title-text'>S.No</div>
+                <div className='col-1 fs-3 title-text'>S.No</div>
                 <div className='col-2 fs-3 title-text'>Project</div>
                 <div className='col-3 title-text fs-3 '>Description</div>
                 <div className='col-1 title-text fs-3 '>Edit</div>
@@ -112,29 +150,29 @@ function Home() {
             <div className='margin'>
               {loading
                 ? (<p>Loading....</p>)
-                : (allProjectData.map((item,index) => (
+                : (allProjectData.map((item, index) => (
                   <div className='row mt-3 ms-3' key={item._id}>
-                    <div className='col-1 fs-4 project-text'>{index+1}</div>
+                    <div className='col-1 fs-4 project-text'>{index + 1}</div>
                     <div className='col-2 fs-4 project-text'>{item.title}</div>
                     <div className='col-3 fs-4 project-text'>{item.description}</div>
-                    <div className='col-1 '><i className="text-warning fa-solid ms-3 fa-pen-to-square fs-5"></i></div>
+                    <div className='col-1 '><i onClick={() => onEditProject(item._id)} className="text-warning fa-solid ms-3 fa-pen-to-square fs-5"></i></div>
                     <div className='col-2 '><i onClick={() => onDeteteProject(item._id)} className="text-danger fa-solid fa-trash-can fs-5"></i></div>
                     <div className='col-1 '>
-                    <Popup trigger={<i className="text-success fs-5 fa-sharp fa-solid fa-paper-plane"></i>} position="top center">
-                      <div>
-                        <input 
-                          type='text'
-                          placeholder='Enter user emailId/Id'
-                          className='p-1 w-100 bg-light'
-                        />
-                        <button className='w-100 bg-success text-warning border rounded'>
-                          <h3>Share</h3>
-                        </button>
-                      </div>
-                    </Popup>
+                      <Popup trigger={<i className="text-success fs-5 fa-sharp fa-solid fa-paper-plane"></i>} position="top center">
+                        <div>
+                          <input
+                            type='text'
+                            placeholder='Enter user emailId/Id'
+                            className='p-1 w-100 bg-light'
+                          />
+                          <button className='w-100 bg-success text-warning border rounded'>
+                            <h3>Share</h3>
+                          </button>
+                        </div>
+                      </Popup>
                     </div>
-                    <div className='col-2'><i onClick={()=> onShowReport(item._id)} className='fa-solid fa-calendar-check fs-5 text-info'></i></div>
-                    
+                    <div className='col-2'><i onClick={() => onShowReport(item._id)} className='fa-solid fa-calendar-check fs-5 text-info'></i></div>
+
                   </div>
                 )))}
 
@@ -146,5 +184,3 @@ function Home() {
 }
 
 export default Home
-
-// onClick={() => onDeteteTodo(item._id)}

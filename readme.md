@@ -42,6 +42,12 @@ Create a project management api solution:
 # add new project
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/added.png)
 
+# upgate a project
+![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/delete.png)
+
+# update2 a project
+![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/delete.png)
+
 # delete a project
 ![image](https://github.com/Yashaswi-Anand/Project-Management-System/blob/master/screenshots/delete.png)
 
